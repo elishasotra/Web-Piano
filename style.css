@@ -1,0 +1,113 @@
+body{
+  margin:0;
+  background:#111;
+  font-family:Arial;
+  overflow:hidden;
+}
+
+.panel{
+  background:#c40000;
+  padding:15px;
+  text-align:center;
+}
+
+#display{
+  background:black;
+  color:#00ff88;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+.controls button{
+  margin:5px;
+  padding:8px 14px;
+  background:#222;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+#led{
+  width:100%;
+  height:6px;
+  background:lime;
+  opacity:0.2;
+  margin-top:10px;
+  transition:0.1s;
+}
+
+/* piano */
+#piano{
+  position:absolute;
+  bottom:0;
+  height:260px;
+  width:100%;
+  background:black;
+}
+
+/* white keys */
+.white{
+  position:absolute;
+  width:40px;
+  height:260px;
+  background:white;
+  border:1px solid #ccc;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  font-size:10px;
+  transition: all 0.08s ease;
+}
+
+/* black keys */
+.black{
+  position:absolute;
+  width:25px;
+  height:160px;
+  background:black;
+  z-index:2;
+  transition: all 0.08s ease;
+}
+
+/* pressed */
+.white.active{
+  background:#ddd;
+  transform:translateY(4px);
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.black.active{
+  background:#222;
+  transform:translateY(3px);
+  box-shadow:0 0 10px #00ff88;
+}
+
+/* glow */
+.white.active::after,
+.black.active::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle, rgba(0,255,120,0.4), transparent);
+  top:0;
+  left:0;
+}
+
+/* ripple */
+.ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(0,255,120,0.4);
+  transform:scale(0);
+  animation:rippleAnim 0.4s ease-out;
+}
+
+@keyframes rippleAnim{
+  to{
+    transform:scale(3);
+    opacity:0;
+  }
+}
